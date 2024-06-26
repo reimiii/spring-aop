@@ -1,4 +1,4 @@
-package franxx.code.spring_aop;
+package franxx.code.spring.aop;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

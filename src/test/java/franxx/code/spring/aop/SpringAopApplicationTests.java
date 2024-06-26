@@ -1,4 +1,4 @@
-package franxx.code.spring_aop;
+package franxx.code.spring.aop;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

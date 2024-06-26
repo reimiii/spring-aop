@@ -1,4 +1,4 @@
-package franxx.code.spring_aop.service;
+package franxx.code.spring.aop.service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
