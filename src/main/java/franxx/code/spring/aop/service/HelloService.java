@@ -16,4 +16,8 @@ public class HelloService {
         log.info("call bye method from {}", HelloService.class);
         return "bye " + name;
     }
+
+    public void test() {
+        log.info("call test method from {}", HelloService.class);
+    }
 }

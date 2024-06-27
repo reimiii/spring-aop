@@ -16,5 +16,6 @@ class HelloServiceTest {
     void callMethod() {
         assertEquals("hello me", service.hello("me"));
         assertEquals("bye me", service.bye("me"));
+        service.test();
     }
 }

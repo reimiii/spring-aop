@@ -39,4 +39,14 @@ public class LogAspect {
             log.info("around finally " + nameClass + "." + nameMethod + "()");
         }
     }
+
+    @Pointcut("execution(* franxx.code.spring.aop.service.HelloService.*(java.lang.String))")
+    public void pointcutHelloServiceParam() {
+    }
+
+    @Before("pointcutHelloServiceParam()")
+    public void logStringParam(JoinPoint joinPoint) {
+        String value = (String) joinPoint.getArgs()[0];
+        log.info("execute method with param value: {}", value);
+    }
 }
