@@ -1,6 +1,7 @@
 package franxx.code.spring.aop.aspect;
 
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -16,8 +17,10 @@ public class LogAspect {
     }
 
     @Before("helloServiceMethod()")
-    public void beforeHelloServiceMethod() {
-        log.info("before HelloService method");
+    public void beforeHelloServiceMethod(JoinPoint joinPoint) {
+        String nameClass = joinPoint.getTarget().getClass().getName();
+        String nameMethod = joinPoint.getSignature().getName();
+        log.info("before " + nameClass + "." + nameMethod + "()");
     }
 
     @Before("helloServiceMethod()")
