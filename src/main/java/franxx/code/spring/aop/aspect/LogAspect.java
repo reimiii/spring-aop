@@ -2,6 +2,8 @@ package franxx.code.spring.aop.aspect;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -23,8 +25,18 @@ public class LogAspect {
         log.info("before " + nameClass + "." + nameMethod + "()");
     }
 
-    @Before("helloServiceMethod()")
-    public void beforeHelloServiceMethod2() {
-        log.info("before HelloService method again");
+    @Around("helloServiceMethod()")
+    public Object aroundHelloService(ProceedingJoinPoint joinPoint) throws Throwable {
+        String nameClass = joinPoint.getTarget().getClass().getName();
+        String nameMethod = joinPoint.getSignature().getName();
+        try {
+            log.info("around before " + nameClass + "." + nameMethod + "()");
+            return joinPoint.proceed(joinPoint.getArgs());
+        } catch (Throwable throwable) {
+            log.info("around throw " + nameClass + "." + nameMethod + "()");
+            throw throwable;
+        } finally {
+            log.info("around finally " + nameClass + "." + nameMethod + "()");
+        }
     }
 }
